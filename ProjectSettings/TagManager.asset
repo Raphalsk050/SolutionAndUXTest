@@ -6,6 +6,7 @@ TagManager:
   tags:
   - OptionsPanel
   - Board
+  - Tile
   layers:
   - Default
   - TransparentFX

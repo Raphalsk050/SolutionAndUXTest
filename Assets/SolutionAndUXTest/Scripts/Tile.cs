@@ -6,15 +6,16 @@ using Random = UnityEngine.Random;
 
 public class Tile : MonoBehaviour
 {
-
     public ImportantTypes.TileType TileType;
+
     public delegate void StateChange(ImportantTypes.TileStates newState);
+
     public StateChange OnTileStateChanged;
     public List<Collectable> collectable;
-    
+
     public Sprite TileSprite;
     private ImportantTypes.TileStates _tileState;
-    
+
 
     public void ChangeToTileState(ImportantTypes.TileStates state)
     {
@@ -25,7 +26,12 @@ public class Tile : MonoBehaviour
     public void Initialize()
     {
         var selectedCollectable = collectable[Random.Range(0, collectable.Count)];
-        GetComponent<MeshRenderer>().sharedMaterial = selectedCollectable.Material;
-        
+        if (GetComponent<MeshRenderer>())
+        {
+            GetComponent<MeshRenderer>().sharedMaterial = selectedCollectable.Material;
+            return;
+        }
+
+        transform.GetComponentInChildren<MeshRenderer>().sharedMaterial = selectedCollectable.Material;
     }
 }
