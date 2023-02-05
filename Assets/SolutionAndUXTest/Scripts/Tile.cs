@@ -34,4 +34,9 @@ public class Tile : MonoBehaviour
 
         transform.GetComponentInChildren<MeshRenderer>().sharedMaterial = selectedCollectable.Material;
     }
+    
+    void OnMouseDown()
+    {
+        Debug.Log(transform.GetComponentInChildren<MeshRenderer>().sharedMaterial.name);
+    }
 }
