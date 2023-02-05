@@ -4,5 +4,8 @@ using UnityEngine;
 
 public class MoveState : State
 {
-    
+    private void Start()
+    {
+        StateType = ImportantTypes.GameplayStates.MoveState;
+    }
 }

@@ -15,5 +15,12 @@ public class ImportantTypes
         Hexagon,
         Square
     }
+
+    public enum GameplayStates
+    {
+        MoveState,
+        BattleState,
+        GameOverState
+    }
     
 }

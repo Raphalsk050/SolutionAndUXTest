@@ -1,8 +1,7 @@
 ﻿using System.Collections.Generic;
 using TMPro;
-using UnityEditor.IMGUI.Controls;
 using UnityEngine;
-using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class MenuController : MonoBehaviour
 
@@ -12,6 +11,7 @@ public class MenuController : MonoBehaviour
     private Resolution[] _screenResolutions;
     private TMP_Dropdown _resolutionDropDown;
     private List<string> _resolutionOptionsStr;
+    private bool _fullScreen;
      
     private void Start()
     {
@@ -22,6 +22,7 @@ public class MenuController : MonoBehaviour
         _resolutionDropDown = GameObject.FindWithTag("ResolutionDropDown").GetComponent<TMP_Dropdown>();
         _resolutionDropDown.ClearOptions();
         FeedDropDownWithScreenResolutions(_screenResolutions);
+        FindCurrentResolution();
     }
 
     public void CloseOptions()
@@ -41,11 +42,17 @@ public class MenuController : MonoBehaviour
     public void SetFullScreen(bool fullScreen)
     {
         Screen.fullScreen = fullScreen;
+        _fullScreen = fullScreen;
     }
     
     public void SetVsync(bool Vsync)
     {
         QualitySettings.vSyncCount = Vsync ? 1 : 0;
+    }
+
+    public void LoadGameScene()
+    {
+        SceneManager.LoadSceneAsync(1);
     }
 
     private void FeedDropDownWithScreenResolutions(Resolution[] resolutions)
@@ -59,5 +66,23 @@ public class MenuController : MonoBehaviour
         
         _resolutionDropDown.AddOptions(_resolutionOptionsStr);
         
+    }
+
+    private void FindCurrentResolution()
+    {
+        for (int i = 0; i < _screenResolutions.Length; i++)
+        {
+            if (_screenResolutions[i].height == Screen.currentResolution.height && _screenResolutions[i].width == Screen.currentResolution.width)
+            {
+                _resolutionDropDown.value = i;
+                return;
+            }
+        }
+    }
+
+    public void ApplyResolution(int index)
+    {
+        Resolution _resolutionToSet = _screenResolutions[index];
+        Screen.SetResolution(_resolutionToSet.width,_resolutionToSet.height,_fullScreen);
     }
 }

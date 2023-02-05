@@ -4,5 +4,8 @@ using UnityEngine;
 
 public class GameOverState : State
 {
-   
+    private void Start()
+    {
+        StateType = ImportantTypes.GameplayStates.GameOverState;
+    }
 }
