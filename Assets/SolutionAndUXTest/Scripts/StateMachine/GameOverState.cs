@@ -4,8 +4,29 @@ using UnityEngine;
 
 public class GameOverState : State
 {
-    private void Start()
+    public override void Initialize()
     {
-        StateType = ImportantTypes.GameplayStates.GameOverState;
+        base.Initialize();
+        stateType = ImportantTypes.GameplayStates.GameOverState;
+    }
+
+    public override void PreEnterState()
+    {
+        base.PreEnterState();
+    }
+
+    public override void EnterState()
+    {
+        base.EnterState();
+    }
+
+    public override void PreExitingState()
+    {
+        base.PreExitingState();
+    }
+
+    public override void ExitState()
+    {
+        base.ExitState();
     }
 }

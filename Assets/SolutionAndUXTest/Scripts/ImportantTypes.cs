@@ -20,7 +20,15 @@ public class ImportantTypes
     {
         MoveState,
         BattleState,
+        SetupState,
         GameOverState
+    }
+
+    public enum PlayerActionStates
+    {
+        Moving,
+        Awaiting,
+        Attacking
     }
     
 }

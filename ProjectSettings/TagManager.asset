@@ -8,6 +8,7 @@ TagManager:
   - Board
   - Tile
   - ResolutionDropDown
+  - GameManager
   layers:
   - Default
   - TransparentFX

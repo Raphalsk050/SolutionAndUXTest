@@ -6,12 +6,7 @@ using UnityEngine;
 public class Collectable : ScriptableObject
 {
     public Material Material;
-    private int _value;
-    
-    public int Value
-    {
-        get => _value;
-        set => _value = value;
-    }
-    
+    private float _value = 1f;
+
+    public float Value => _value;
 }

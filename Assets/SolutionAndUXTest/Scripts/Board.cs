@@ -3,32 +3,28 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.Mathematics;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class Board : MonoBehaviour
 {
     public Vector2Int BoardSize;
     public ImportantTypes.TileType TyleType;
     public List<GameObject> TilePrefabs;
+    private List<Tile> _tiles;
     private GameObject _parent;
 
 
-//this is used only for debug proposes. Used to preview board instanced tiles.
-#if UNITY_EDITOR
-    private void OnDrawGizmos()
-    {
-    }
-#endif
 
-    private void Start()
+    private void Awake()
     {
         _parent = GameObject.FindGameObjectWithTag("Board");
+        _tiles = new List<Tile>();
         CreateBoardWithConfig(BoardSize, TyleType);
     }
 
     public void CreateBoardWithConfig(Vector2Int size, ImportantTypes.TileType tileType)
     {
         Vector3 _location = Vector3.zero;
-        int _height = 0;
         switch (tileType)
         {
             case ImportantTypes.TileType.Hexagon:
@@ -50,8 +46,10 @@ public class Board : MonoBehaviour
                         }
 
                         GameObject _instance = Instantiate(selectedHexagonTile, _location, quaternion.identity);
-                        _instance.GetComponent<Tile>().Initialize();
+                        _instance.GetComponentInChildren<Tile>().Initialize();
+                        _instance.name = (row+","+column);
                         _instance.transform.parent = _parent.transform;
+                        _tiles.Add(_instance.GetComponentInChildren<Tile>());
                     }
                 }
 
@@ -61,14 +59,16 @@ public class Board : MonoBehaviour
 
                 GameObject selectedSquareTile = VerifyTileType(ImportantTypes.TileType.Square);
 
-                for (int i = 0; i < size.x; i++)
+                for (int column = 0; column < size.x; column++)
                 {
-                    for (int j = 0; j < size.y; j++)
+                    for (int row = 0; row < size.y; row++)
                     {
-                        _location = new Vector3(i, 0, j);
+                        _location = new Vector3(column, 0, row);
 
                         GameObject _instance = Instantiate(selectedSquareTile, _location, quaternion.identity);
+                        
                         _instance.GetComponent<Tile>().Initialize();
+                        _instance.name = (row+","+column);
                         _instance.transform.parent = _parent.transform;
                         
                     }
@@ -81,12 +81,27 @@ public class Board : MonoBehaviour
     {
         foreach (var tile in TilePrefabs)
         {
-            if (tile.GetComponent<Tile>().TileType == tileType)
+            switch (tileType)
             {
-                return tile;
+                case ImportantTypes.TileType.Hexagon:
+                    if (tile.GetComponentInChildren<Tile>().TileType == tileType)
+                    {
+                        return tile;
+                    }
+                    break;
+                case ImportantTypes.TileType.Square:
+                    if (tile.GetComponent<Tile>().TileType == tileType)
+                    {
+                        return tile;
+                    }
+                    break;
             }
         }
-
         return null;
+    }
+
+    public Tile GetRandomTile()
+    {
+        return _tiles[Random.Range(0, _tiles.Count)];
     }
 }

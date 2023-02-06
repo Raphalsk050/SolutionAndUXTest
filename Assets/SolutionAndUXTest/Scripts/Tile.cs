@@ -7,15 +7,16 @@ using Random = UnityEngine.Random;
 public class Tile : MonoBehaviour
 {
     public ImportantTypes.TileType TileType;
-
+    
     public delegate void StateChange(ImportantTypes.TileStates newState);
 
     public StateChange OnTileStateChanged;
     public List<Collectable> collectable;
-
     public Sprite TileSprite;
+    public Vector2Int tilePositionMatrix;
     private ImportantTypes.TileStates _tileState;
-
+    private GameManager _gameManager;
+    private Collider _tileCollider;
 
     public void ChangeToTileState(ImportantTypes.TileStates state)
     {
@@ -25,18 +26,22 @@ public class Tile : MonoBehaviour
 
     public void Initialize()
     {
-        var selectedCollectable = collectable[Random.Range(0, collectable.Count)];
+        Collectable selectedCollectable = collectable[Random.Range(0, collectable.Count)];
         if (GetComponent<MeshRenderer>())
         {
+            _gameManager = GameObject.FindWithTag("GameManager").GetComponent<GameManager>();
             GetComponent<MeshRenderer>().sharedMaterial = selectedCollectable.Material;
             return;
         }
 
         transform.GetComponentInChildren<MeshRenderer>().sharedMaterial = selectedCollectable.Material;
+        _gameManager = GameObject.FindWithTag("GameManager").GetComponent<GameManager>();
+
+        
     }
-    
+
     void OnMouseDown()
     {
-        Debug.Log(transform.GetComponentInChildren<MeshRenderer>().sharedMaterial.name);
+        _gameManager.TileClicked(gameObject);
     }
 }

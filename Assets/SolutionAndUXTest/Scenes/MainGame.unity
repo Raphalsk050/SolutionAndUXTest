@@ -121,6 +121,132 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1001 &514460920
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 94463081, guid: e721c3f5fb9b7fd49bcc219d13419308, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 318943989336574434, guid: e721c3f5fb9b7fd49bcc219d13419308,
+        type: 3}
+      propertyPath: PlayerDices.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 318943989336574434, guid: e721c3f5fb9b7fd49bcc219d13419308,
+        type: 3}
+      propertyPath: movementCurve.m_Curve.Array.data[0].inSlope
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 318943989336574434, guid: e721c3f5fb9b7fd49bcc219d13419308,
+        type: 3}
+      propertyPath: movementCurve.m_Curve.Array.data[0].outSlope
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 318943989336574434, guid: e721c3f5fb9b7fd49bcc219d13419308,
+        type: 3}
+      propertyPath: movementCurve.m_Curve.Array.data[0].tangentMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 318943989336574434, guid: e721c3f5fb9b7fd49bcc219d13419308,
+        type: 3}
+      propertyPath: movementCurve.m_Curve.Array.data[1].inSlope
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 318943989336574434, guid: e721c3f5fb9b7fd49bcc219d13419308,
+        type: 3}
+      propertyPath: movementCurve.m_Curve.Array.data[1].outSlope
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 318943989336574434, guid: e721c3f5fb9b7fd49bcc219d13419308,
+        type: 3}
+      propertyPath: movementCurve.m_Curve.Array.data[1].tangentMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 318943989336574434, guid: e721c3f5fb9b7fd49bcc219d13419308,
+        type: 3}
+      propertyPath: PlayerDices.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 4dcf2667c04659e4590deb45f9a7b076,
+        type: 2}
+    - target: {fileID: 318943989336574434, guid: e721c3f5fb9b7fd49bcc219d13419308,
+        type: 3}
+      propertyPath: PlayerDices.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: 4dcf2667c04659e4590deb45f9a7b076,
+        type: 2}
+    - target: {fileID: 318943989336574434, guid: e721c3f5fb9b7fd49bcc219d13419308,
+        type: 3}
+      propertyPath: PlayerDices.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: 4dcf2667c04659e4590deb45f9a7b076,
+        type: 2}
+    - target: {fileID: 318943989336574437, guid: e721c3f5fb9b7fd49bcc219d13419308,
+        type: 3}
+      propertyPath: m_Name
+      value: Character (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 318943989336574462, guid: e721c3f5fb9b7fd49bcc219d13419308,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 10.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 318943989336574462, guid: e721c3f5fb9b7fd49bcc219d13419308,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 318943989336574462, guid: e721c3f5fb9b7fd49bcc219d13419308,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -10.78
+      objectReference: {fileID: 0}
+    - target: {fileID: 318943989336574462, guid: e721c3f5fb9b7fd49bcc219d13419308,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 318943989336574462, guid: e721c3f5fb9b7fd49bcc219d13419308,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 318943989336574462, guid: e721c3f5fb9b7fd49bcc219d13419308,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 318943989336574462, guid: e721c3f5fb9b7fd49bcc219d13419308,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 318943989336574462, guid: e721c3f5fb9b7fd49bcc219d13419308,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 318943989336574462, guid: e721c3f5fb9b7fd49bcc219d13419308,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 318943989336574462, guid: e721c3f5fb9b7fd49bcc219d13419308,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 318943989336574462, guid: e721c3f5fb9b7fd49bcc219d13419308,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: e721c3f5fb9b7fd49bcc219d13419308, type: 3}
 --- !u!1 &674885211
 GameObject:
   m_ObjectHideFlags: 0
@@ -182,6 +308,8 @@ GameObject:
   - component: {fileID: 732876397}
   - component: {fileID: 732876396}
   - component: {fileID: 732876395}
+  - component: {fileID: 732876400}
+  - component: {fileID: 732876401}
   m_Layer: 0
   m_Name: StateMachine
   m_TagString: Untagged
@@ -251,6 +379,30 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &732876400
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 732876394}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27e0d75a28241f44fa1d5c9bd1e46888, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &732876401
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 732876394}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 514f857e10a817546ba50c3af6869109, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &865551815
 GameObject:
   m_ObjectHideFlags: 0
@@ -334,6 +486,62 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!1 &1767283261
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1767283263}
+  - component: {fileID: 1767283262}
+  - component: {fileID: 1767283264}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: GameManager
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1767283262
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1767283261}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 500c63b489398ec49a1434acfb1c5ca6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1767283263
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1767283261}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 8.029918, y: 0.27506053, z: -5.629774}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1767283264
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1767283261}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28738d474f64dd34b875ee30cae18a03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2033300726
 GameObject:
   m_ObjectHideFlags: 0
@@ -433,6 +641,63 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 94463081, guid: e721c3f5fb9b7fd49bcc219d13419308, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 318943989336574434, guid: e721c3f5fb9b7fd49bcc219d13419308,
+        type: 3}
+      propertyPath: PlayerDices.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 318943989336574434, guid: e721c3f5fb9b7fd49bcc219d13419308,
+        type: 3}
+      propertyPath: movementCurve.m_Curve.Array.data[0].inSlope
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 318943989336574434, guid: e721c3f5fb9b7fd49bcc219d13419308,
+        type: 3}
+      propertyPath: movementCurve.m_Curve.Array.data[0].outSlope
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 318943989336574434, guid: e721c3f5fb9b7fd49bcc219d13419308,
+        type: 3}
+      propertyPath: movementCurve.m_Curve.Array.data[0].tangentMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 318943989336574434, guid: e721c3f5fb9b7fd49bcc219d13419308,
+        type: 3}
+      propertyPath: movementCurve.m_Curve.Array.data[1].inSlope
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 318943989336574434, guid: e721c3f5fb9b7fd49bcc219d13419308,
+        type: 3}
+      propertyPath: movementCurve.m_Curve.Array.data[1].outSlope
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 318943989336574434, guid: e721c3f5fb9b7fd49bcc219d13419308,
+        type: 3}
+      propertyPath: movementCurve.m_Curve.Array.data[1].tangentMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 318943989336574434, guid: e721c3f5fb9b7fd49bcc219d13419308,
+        type: 3}
+      propertyPath: PlayerDices.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 4dcf2667c04659e4590deb45f9a7b076,
+        type: 2}
+    - target: {fileID: 318943989336574434, guid: e721c3f5fb9b7fd49bcc219d13419308,
+        type: 3}
+      propertyPath: PlayerDices.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: 4dcf2667c04659e4590deb45f9a7b076,
+        type: 2}
+    - target: {fileID: 318943989336574434, guid: e721c3f5fb9b7fd49bcc219d13419308,
+        type: 3}
+      propertyPath: PlayerDices.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: 4dcf2667c04659e4590deb45f9a7b076,
+        type: 2}
     - target: {fileID: 318943989336574437, guid: e721c3f5fb9b7fd49bcc219d13419308,
         type: 3}
       propertyPath: m_Name

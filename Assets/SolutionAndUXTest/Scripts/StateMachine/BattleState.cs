@@ -5,13 +5,29 @@ using UnityEngine;
 
 public class BattleState : State
 {
-    private void Start()
+    public override void Initialize()
     {
-        StateType = ImportantTypes.GameplayStates.BattleState;
+        base.Initialize();
+        stateType = ImportantTypes.GameplayStates.BattleState;
     }
 
     public override void PreEnterState()
     {
-        
+        base.PreEnterState();
+    }
+
+    public override void EnterState()
+    {
+        base.EnterState();
+    }
+
+    public override void PreExitingState()
+    {
+        base.PreExitingState();
+    }
+
+    public override void ExitState()
+    {
+        base.ExitState();
     }
 }
