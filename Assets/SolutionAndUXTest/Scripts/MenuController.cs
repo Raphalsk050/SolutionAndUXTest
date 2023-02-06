@@ -6,22 +6,35 @@ using UnityEngine.SceneManagement;
 public class MenuController : MonoBehaviour
 
 {
+    public BoardConfig BoardConfig;
     private GameObject _optionsPanel;
     private CanvasGroup _optionsGroup;
     private Resolution[] _screenResolutions;
     private TMP_Dropdown _resolutionDropDown;
     private List<string> _resolutionOptionsStr;
+    private List<string> _tileTypeDropDownStr;
+    private List<ImportantTypes.TileType> _tileTypeDropDownDefault;
     private bool _fullScreen;
-     
+    private TMP_Dropdown _tileTypeDropDown;
+    private TMP_InputField _boardXSizeInputField;
+    private TMP_InputField _boardYSizeInputField;
+
     private void Start()
     {
         _resolutionOptionsStr = new List<string>();
+        _tileTypeDropDownStr = new List<string>();
+        _tileTypeDropDownDefault = new List<ImportantTypes.TileType>();
         _optionsPanel = GameObject.FindWithTag("OptionsPanel");
         _optionsGroup = _optionsPanel.GetComponent<CanvasGroup>();
         _screenResolutions = Screen.resolutions;
         _resolutionDropDown = GameObject.FindWithTag("ResolutionDropDown").GetComponent<TMP_Dropdown>();
+        _tileTypeDropDown = GameObject.FindWithTag("TileTypeDropDown").GetComponent<TMP_Dropdown>();
+        _boardXSizeInputField = GameObject.FindWithTag("XBoardSizeInputField").GetComponent<TMP_InputField>();
+        _boardYSizeInputField = GameObject.FindWithTag("YBoardSizeInputField").GetComponent<TMP_InputField>();
+        _tileTypeDropDown.ClearOptions();
         _resolutionDropDown.ClearOptions();
         FeedDropDownWithScreenResolutions(_screenResolutions);
+        FeedDropDownWithTileType();
         FindCurrentResolution();
     }
 
@@ -68,6 +81,17 @@ public class MenuController : MonoBehaviour
         
     }
 
+    private void FeedDropDownWithTileType()
+    {
+        _tileTypeDropDownStr.Clear();
+        
+        _tileTypeDropDownStr.Add(ImportantTypes.TileType.Hexagon.ToString());
+        _tileTypeDropDownStr.Add(ImportantTypes.TileType.Square.ToString());
+        _tileTypeDropDownDefault.Add(ImportantTypes.TileType.Hexagon);
+        _tileTypeDropDownDefault.Add(ImportantTypes.TileType.Square);
+        _tileTypeDropDown.AddOptions(_tileTypeDropDownStr);
+    }
+
     private void FindCurrentResolution()
     {
         for (int i = 0; i < _screenResolutions.Length; i++)
@@ -80,6 +104,22 @@ public class MenuController : MonoBehaviour
         }
     }
 
+    public void ApplyTileType(int index)
+    {
+        ImportantTypes.TileType tileTypeToSet = _tileTypeDropDownDefault[index];
+        BoardConfig.TileType = tileTypeToSet;
+    }
+
+    public void ApplyBoardXSize(string xSize)
+    {
+        BoardConfig.BoardSize.x = int.Parse(xSize);
+    }
+
+    public void ApplyBoardYSize(string ySize)
+    {
+        BoardConfig.BoardSize.y = int.Parse(ySize);
+    }
+    
     public void ApplyResolution(int index)
     {
         Resolution _resolutionToSet = _screenResolutions[index];

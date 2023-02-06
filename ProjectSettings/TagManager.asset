@@ -11,6 +11,9 @@ TagManager:
   - GameManager
   - MovementText
   - CameraTarget
+  - TileTypeDropDown
+  - XBoardSizeInputField
+  - YBoardSizeInputField
   layers:
   - Default
   - TransparentFX

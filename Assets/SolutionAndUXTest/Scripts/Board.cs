@@ -10,6 +10,7 @@ public class Board : MonoBehaviour
     public Vector2Int BoardSize;
     public ImportantTypes.TileType TyleType;
     public List<GameObject> TilePrefabs;
+    public BoardConfig BoardConfig;
     private List<Tile> _tiles;
     private GameObject _parent;
 
@@ -19,7 +20,7 @@ public class Board : MonoBehaviour
     {
         _parent = GameObject.FindGameObjectWithTag("Board");
         _tiles = new List<Tile>();
-        CreateBoardWithConfig(BoardSize, TyleType);
+        CreateBoardWithConfig(BoardConfig.BoardSize, BoardConfig.TileType);
     }
 
     public void CreateBoardWithConfig(Vector2Int size, ImportantTypes.TileType tileType)

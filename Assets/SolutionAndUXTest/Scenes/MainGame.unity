@@ -573,6 +573,7 @@ MonoBehaviour:
   TilePrefabs:
   - {fileID: 7722802009900117055, guid: d41f8c336b8587b40b2fd1193f83cae6, type: 3}
   - {fileID: 6911482416085653328, guid: c02a8ebc95a8c9d49bb61d4029f4e396, type: 3}
+  BoardConfig: {fileID: 11400000, guid: b4afe18f81a57af43b99f6c446a678e5, type: 2}
 --- !u!1 &732876394
 GameObject:
   m_ObjectHideFlags: 0
