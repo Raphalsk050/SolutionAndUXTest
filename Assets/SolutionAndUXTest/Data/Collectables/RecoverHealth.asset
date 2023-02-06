@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: RecoverHealth
   m_EditorClassIdentifier: 
   Material: {fileID: 2100000, guid: e105646dddcf64040975b15f29585f01, type: 2}
+  ChanceToSpawn: 0.6

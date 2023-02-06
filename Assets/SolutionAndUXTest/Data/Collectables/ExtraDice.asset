@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: ExtraDice
   m_EditorClassIdentifier: 
   Material: {fileID: 2100000, guid: a2b5b4964f73a8946bbde4d572b2c756, type: 2}
+  ChanceToSpawn: 0.1

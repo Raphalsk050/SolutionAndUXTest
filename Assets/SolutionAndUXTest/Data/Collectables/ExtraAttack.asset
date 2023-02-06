@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: ExtraAttack
   m_EditorClassIdentifier: 
   Material: {fileID: 2100000, guid: ff0b5b1bda0683b41a4ab68ae010ddd7, type: 2}
+  ChanceToSpawn: 0.1

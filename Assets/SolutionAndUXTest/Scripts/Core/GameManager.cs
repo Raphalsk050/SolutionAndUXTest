@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using Cinemachine;
 using Unity.Mathematics;
 using UnityEngine;
 
@@ -15,12 +16,28 @@ public class GameManager : MonoBehaviour
     private GameObject _currentTileLocation;
     private Board _board;
     private GameObject _lastTileLocation;
-
+    private StateMachine _stateMachine;
+    private CinemachineVirtualCamera _cinemachineVirtualCamera;
+    private CameraTarget _cameraTarget;
+    
     public Character[] Characters => _players;
     public Board Board => _board;
-    
+    public Character CurrentPlayer => _currentPlayer;
+
     private void Awake()
     {
+        _turnManager = GetComponent<TurnManager>();
+
+        _turnManager.TurnPassed += SwitchPlayer;
+        
+        _cinemachineVirtualCamera = FindObjectOfType<CinemachineVirtualCamera>();
+
+        _cameraTarget = FindObjectOfType<CameraTarget>();
+
+        
+        
+        _stateMachine = FindObjectOfType<StateMachine>();
+        
         var charactersFound = FindObjectsOfType<Character>();
 
         _players = charactersFound;
@@ -36,14 +53,17 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        _cameraTarget.MovementFinished += SetupPlayer;
         _currentPlayer = _players[0];
-        _currentPlayer.MovementConcluded += OnMovementConcluded;
         TileClicked += MovePlayer;
+        SwitchPlayer(0);
+
     }
 
     public void MovePlayer(GameObject Tile)
     {
-        if (_currentPlayer.ActionState != ImportantTypes.PlayerActionStates.Awaiting)
+        if (_currentPlayer.PlayerActionState != ImportantTypes.PlayerActionStates.Awaiting ||
+            _stateMachine.CurrentState.StateType != ImportantTypes.GameplayStates.MoveState)
         {
             return;
         }
@@ -57,6 +77,27 @@ public class GameManager : MonoBehaviour
 
     private void OnMovementConcluded()
     {
-        //when the player is able to move again
+        
+        
+    }
+
+    public void SwitchPlayer(int currentTurn)
+    {
+        _currentPlayer.MovementConcluded -= OnMovementConcluded;
+        _currentPlayer.PlayerController.AllMovementsClear -= _turnManager.PassTurn;
+        _currentPlayer.PlayerActionState = ImportantTypes.PlayerActionStates.Moving;
+
+        _currentPlayer = _players[currentTurn % _players.Length];
+        _cameraTarget.transform.SetParent(null);
+        _cameraTarget.FollowPlayer(_currentPlayer.gameObject);
+    }
+
+    public void SetupPlayer()
+    {
+        _cameraTarget.transform.SetParent(_currentPlayer.transform);
+        _currentPlayer.MovementConcluded += OnMovementConcluded;
+        _currentPlayer.PlayerActionState = ImportantTypes.PlayerActionStates.Awaiting;
+        _currentPlayer.PlayerController.AllMovementsClear += _turnManager.PassTurn;
+        _currentPlayer.PlayerController.ResetPlayerMovement();
     }
 }

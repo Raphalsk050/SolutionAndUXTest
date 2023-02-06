@@ -8,12 +8,16 @@ public class SetupState : State
     private Tile _firstTileSelected;
     private Tile _secondTileSelected;
     private bool _tileFound;
+    private Board _board;
+    private GameManager _gameManager;
 
     public override void Initialize()
     {
         base.Initialize();
         stateType = ImportantTypes.GameplayStates.SetupState;
         nextState = ImportantTypes.GameplayStates.MoveState;
+        _board = FindObjectOfType<Board>();
+        _gameManager = FindObjectOfType<GameManager>();
     }
 
     private void FirstCharacterMovementConcluded()
@@ -30,7 +34,7 @@ public class SetupState : State
 
     private void SecondCharacterMovementConcluded()
     {
-        Debug.Log("Setup board!");
+        EnterState();
     }
 
     public override void PreEnterState()
@@ -48,11 +52,23 @@ public class SetupState : State
     public override void EnterState()
     {
         base.EnterState();
+
+        foreach (var character in _characters)
+        {
+            foreach (var tile in character.NearTiles)
+            {
+                tile.SetCollectable(tile.collectable[0]);
+                _gameManager.CurrentPlayer.CurrentTile.SetCollectable(tile.collectable[0]);
+            }
+        }
+        _characters[0].MovementConcluded -= FirstCharacterMovementConcluded;
+        _characters[1].MovementConcluded -= SecondCharacterMovementConcluded;
+        PreExitingState();
     }
 
     public override void PreExitingState()
     {
-        base.PreExitingState();
+        ExitState();
     }
 
     public override void ExitState()

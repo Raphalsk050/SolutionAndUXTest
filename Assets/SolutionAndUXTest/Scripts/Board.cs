@@ -70,7 +70,7 @@ public class Board : MonoBehaviour
                         _instance.GetComponent<Tile>().Initialize();
                         _instance.name = (row+","+column);
                         _instance.transform.parent = _parent.transform;
-                        
+                        _tiles.Add(_instance.GetComponent<Tile>());
                     }
                 }
                 break;

@@ -13,26 +13,34 @@ public class Character : MonoBehaviour
     public Dice[] PlayerDices;
     public ImportantTypes.TileType boardTileType;
 
-    //i know this is dynamic allocated, i'm out of time :)
+    //i know, this is dynamic allocated, i'm out of time :)
     private List<Tile> _nearTiles;
     private Tile _currentTile;
     private ImportantTypes.PlayerActionStates _playerActionState;
 
-    //i know this is dynamic allocated, i'm out of time :)
+    public ImportantTypes.PlayerActionStates PlayerActionState
+    {
+        get => _playerActionState;
+        set => _playerActionState = value;
+    }
+
+    private PlayerController _playerController;
+
+    //i know, this is dynamic allocated, i'm out of time :)
     private List<Vector3> _checkDirections;
 
 
-    public ImportantTypes.PlayerActionStates ActionState => _playerActionState;
     public List<Tile> NearTiles => _nearTiles;
     public Tile CurrentTile => _currentTile;
-    
+    public PlayerController PlayerController => _playerController;
+
 
     private void Start()
     {
         _checkDirections = new List<Vector3>();
         _nearTiles = new List<Tile>();
-
-        _playerActionState = ImportantTypes.PlayerActionStates.Awaiting;
+        _playerController = GetComponent<PlayerController>();
+        _playerActionState = ImportantTypes.PlayerActionStates.Moving;
 
         switch (boardTileType)
         {
@@ -58,8 +66,8 @@ public class Character : MonoBehaviour
     {
         if (initialMove)
         {
-            StartCoroutine(ValidateCurve(0.5f, tile.transform.position));
-            _currentTile = tile.GetComponent<Tile>();
+            StartCoroutine(ValidateCurve(0.5f, tile));
+
             return true;
         }
 
@@ -67,15 +75,16 @@ public class Character : MonoBehaviour
         {
             if (tile.GetComponent<Tile>() == nearTile)
             {
-                StartCoroutine(ValidateCurve(0.5f, tile.transform.position));
+                StartCoroutine(ValidateCurve(0.5f, tile));
+                _playerController.UsePlayerMovement();
                 return true;
             }
         }
-        
+
         return false;
     }
 
-    private IEnumerator ValidateCurve(float duration, Vector3 tilePosition)
+    private IEnumerator ValidateCurve(float duration, GameObject tile)
     {
         float initialTime = Time.time;
         float endTime = initialTime + duration;
@@ -87,16 +96,16 @@ public class Character : MonoBehaviour
         while (Time.time < endTime)
         {
             t = Mathf.InverseLerp(initialTime, endTime, Time.time);
-            Vector3 newPosition = tilePosition + Vector3.up * 0.394f;
+            Vector3 newPosition = tile.transform.position + Vector3.up * 0.394f;
             transform.position = Vector3.Lerp(currentPosition, newPosition, movementCurve.Evaluate(t));
             yield return null;
         }
-        
+
         _playerActionState = ImportantTypes.PlayerActionStates.Awaiting;
-        VerifyNearTiles();
+        VerifyNearTiles(tile);
     }
 
-    public void VerifyNearTiles()
+    public void VerifyNearTiles(GameObject currentTile)
     {
         RaycastHit raycastHit;
 
@@ -111,10 +120,13 @@ public class Character : MonoBehaviour
                 }
                 else
                 {
-                    raycastHit.transform.gameObject.GetComponentInChildren<Tile>();
+                    _nearTiles.Add(raycastHit.transform.gameObject.GetComponentInChildren<Tile>());
                 }
             }
         }
+
+        _currentTile = currentTile.GetComponent<Tile>();
+
         MovementConcluded();
     }
 }

@@ -46,17 +46,16 @@ public abstract class State : MonoBehaviour
 
     public virtual void EnterState()
     {
-        OnEnteredState();
+        
     }
 
     public virtual void PreExitingState()
     {
-        OnExitingState();
+        
     }
 
     public virtual void ExitState()
     {
         StateMachine.ChangeToGameplayState(nextState);
-        OnExitedState();
     }
 }

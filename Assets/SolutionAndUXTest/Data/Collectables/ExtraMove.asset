@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: ExtraMove
   m_EditorClassIdentifier: 
   Material: {fileID: 2100000, guid: 94bea3316ab37df4aa3a68e6ad1a4efd, type: 2}
+  ChanceToSpawn: 0.1

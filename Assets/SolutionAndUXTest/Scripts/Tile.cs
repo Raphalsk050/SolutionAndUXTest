@@ -26,22 +26,32 @@ public class Tile : MonoBehaviour
 
     public void Initialize()
     {
-        Collectable selectedCollectable = collectable[Random.Range(0, collectable.Count)];
-        if (GetComponent<MeshRenderer>())
+        var col = collectable[Random.Range(0, collectable.Count)];
+        if (Random.Range(0f,1f) < col.ChanceToSpawn)
         {
-            _gameManager = GameObject.FindWithTag("GameManager").GetComponent<GameManager>();
-            GetComponent<MeshRenderer>().sharedMaterial = selectedCollectable.Material;
-            return;
+            SetCollectable(col);
         }
-
-        transform.GetComponentInChildren<MeshRenderer>().sharedMaterial = selectedCollectable.Material;
-        _gameManager = GameObject.FindWithTag("GameManager").GetComponent<GameManager>();
-
-        
+        else
+        {
+            SetCollectable(collectable[0]);
+        }
     }
 
     void OnMouseDown()
     {
         _gameManager.TileClicked(gameObject);
+    }
+
+    public void SetCollectable(Collectable newCollectable)
+    {
+        if (GetComponent<MeshRenderer>())
+        {
+            _gameManager = GameObject.FindWithTag("GameManager").GetComponent<GameManager>();
+            GetComponent<MeshRenderer>().sharedMaterial = newCollectable.Material;
+            return;
+        }
+
+        transform.GetComponentInChildren<MeshRenderer>().sharedMaterial = newCollectable.Material;
+        _gameManager = GameObject.FindWithTag("GameManager").GetComponent<GameManager>();
     }
 }

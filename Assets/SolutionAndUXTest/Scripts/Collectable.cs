@@ -6,6 +6,7 @@ using UnityEngine;
 public class Collectable : ScriptableObject
 {
     public Material Material;
+    public float ChanceToSpawn = 0;
     private float _value = 1f;
 
     public float Value => _value;

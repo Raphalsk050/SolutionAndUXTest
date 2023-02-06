@@ -10,9 +10,12 @@ public class StateMachine : MonoBehaviour
     private State[] _states;
     private State _currentState;
     private Character[] _players;
-    public Character[] Characters => _players;
 
     #endregion
+
+    public Character[] Characters => _players;
+    public State CurrentState => _currentState;
+
 
     #region MonoMethods
 
@@ -25,10 +28,7 @@ public class StateMachine : MonoBehaviour
 
     private void Start()
     {
-        
         ChangeToGameplayState(ImportantTypes.GameplayStates.SetupState);
-        
-        
     }
 
     #endregion
@@ -39,7 +39,6 @@ public class StateMachine : MonoBehaviour
         foreach (var state in _states)
         {
             state.Initialize();
-            
         }
     }
 

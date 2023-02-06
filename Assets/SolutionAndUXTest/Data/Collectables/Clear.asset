@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: Clear
   m_EditorClassIdentifier: 
   Material: {fileID: 2100000, guid: 8dcd20d502ad1964c903516f97c9c3f3, type: 2}
+  ChanceToSpawn: 1
