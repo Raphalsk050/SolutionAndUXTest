@@ -47,7 +47,7 @@ public class GameManager : MonoBehaviour
         //warning players about tile kind to decide the direction to analyze
         foreach (Character player in _players)
         {
-            player.boardTileType = _board.TyleType;
+            player.boardTileType = _board.BoardConfig.TileType;
         }
     }
 

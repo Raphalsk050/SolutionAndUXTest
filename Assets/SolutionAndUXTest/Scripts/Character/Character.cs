@@ -54,10 +54,10 @@ public class Character : MonoBehaviour
 
                 break;
             case ImportantTypes.TileType.Square:
-                _checkDirections.Add(new Vector3(1, -1, 0));
-                _checkDirections.Add(new Vector3(0, -1, 1));
-                _checkDirections.Add(new Vector3(-1, -1, 1));
-                _checkDirections.Add(new Vector3(0, -1, -1));
+                _checkDirections.Add(transform.forward - transform.up);
+                _checkDirections.Add(-transform.forward - transform.up);
+                _checkDirections.Add(transform.right - transform.up);
+                _checkDirections.Add(-transform.right - transform.up);
                 break;
         }
     }
